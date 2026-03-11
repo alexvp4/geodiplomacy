@@ -19,7 +19,8 @@ import {
   MessageSquare,
   Briefcase,
   Crown,
-  Sparkles
+  Sparkles,
+  ExternalLink
 } from 'lucide-react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
@@ -568,14 +569,25 @@ export default function App() {
               <p className="text-slate-200 leading-relaxed text-lg">{state.gameAnalysis.impact}</p>
             </div>
             <div className="md:col-span-2 bg-emerald-500/10 border border-emerald-500/20 p-8 rounded-3xl space-y-6">
-              <div className="flex items-center gap-4">
-                <div className="p-3 rounded-xl bg-emerald-500/20">
-                  <Trophy size={24} className="text-emerald-400" />
+              <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                <div className="flex items-center gap-4">
+                  <div className="p-3 rounded-xl bg-emerald-500/20">
+                    <Trophy size={24} className="text-emerald-400" />
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-bold uppercase tracking-widest text-emerald-500/70">{t.historicalMatch}</h3>
+                    <p className="text-2xl font-bold text-emerald-400">{state.gameAnalysis.historicalLeader}</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-sm font-bold uppercase tracking-widest text-emerald-500/70">{t.historicalMatch}</h3>
-                  <p className="text-2xl font-bold text-emerald-400">{state.gameAnalysis.historicalLeader}</p>
-                </div>
+                <a
+                  href={`https://${state.language}.wikipedia.org/wiki/Special:Search?search=${encodeURIComponent(state.gameAnalysis.historicalLeader)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-400 border border-emerald-500/30 rounded-xl text-sm font-bold transition-colors flex items-center gap-2 shrink-0"
+                >
+                  {t.learnMore.replace('{leader}', state.gameAnalysis.historicalLeader)}
+                  <ExternalLink size={14} />
+                </a>
               </div>
               <p className="text-slate-300 leading-relaxed italic border-l-2 border-emerald-500/30 pl-4">
                 "{state.gameAnalysis.leaderReasoning}"

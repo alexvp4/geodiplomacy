@@ -9,10 +9,11 @@ export async function generateScenario(
   category: Category,
   language: Language
 ): Promise<Scenario> {
-  const prompt = `Generate a realistic geopolitics scenario between ${playerCountry.name} and ${targetCountry.name} in the ${category} category. 
+  const prompt = `You are a geopolitical simulator. The player is the leader of ${playerCountry.name}.
+  Generate a realistic geopolitics scenario where ${playerCountry.name} must make a critical decision regarding ${targetCountry.name} in the ${category} category. 
   The response must be in ${language === 'pt' ? 'Portuguese (Brazilian)' : 'English (US)'}.
-  Provide a title, a brief description of the situation, and 3 distinct options for the player to choose from.
-  CRITICAL: Make the options highly nuanced, complex, and morally gray. Avoid obvious "good" or "bad" choices. Every option should involve significant trade-offs, making it difficult to predict which yields the highest geopolitical influence. A seemingly aggressive choice might be strategically sound, while a peaceful one might show weakness.`;
+  Provide a title, a brief description of the situation, and 3 distinct options for the player (${playerCountry.name}) to choose from.
+  CRITICAL: The options MUST be actions taken by ${playerCountry.name}, NOT by ${targetCountry.name}. Make the options highly nuanced, complex, and morally gray. Avoid obvious "good" or "bad" choices. Every option should involve significant trade-offs, making it difficult to predict which yields the highest geopolitical influence. A seemingly aggressive choice might be strategically sound, while a peaceful one might show weakness.`;
 
   const response = await ai.models.generateContent({
     model: "gemini-3.1-flash-lite-preview",

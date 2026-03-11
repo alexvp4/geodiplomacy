@@ -53,6 +53,7 @@ export const TRANSLATIONS = {
     helpAdvisors: "Government Advisors",
     helpLeader: "What would {leader} do?",
     consulting: "Consulting...",
+    learnMore: "Learn more about {leader}",
   },
   pt: {
     title: "GeoDiplomacia",
@@ -100,6 +101,7 @@ export const TRANSLATIONS = {
     helpAdvisors: "Conselheiros do governo",
     helpLeader: "O que faria {leader}?",
     consulting: "Consultando...",
+    learnMore: "Conhecer mais sobre {leader}",
   }
 };
 
